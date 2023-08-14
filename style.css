@@ -151,23 +151,25 @@ button.menu-btn {
 
 /* first text div "discover..." */
 .text-one-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: left;
     background-color: var(--White);
     padding: 3rem 1.3rem;
-    text-align: left;
+    height: 390px;
 }
 
 h1.header-one {
     color: var(--Black);
     font-weight: 700;
     font-size: 34px;
-    line-height: 0.9;
-    margin-bottom: 0.8rem;
+    line-height: 1;
 }
 
 p.info {
     color: var(--DarkGray);
     line-height: 1.5;
-    margin-bottom: 2rem;
 }
 
 a.shop-now {
@@ -176,6 +178,7 @@ a.shop-now {
     font-size: 18px;
     font-weight: 700;
     letter-spacing: 15px;
+    padding-top: 1rem;
 }
 
 a.shop-now img {
