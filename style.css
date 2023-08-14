@@ -61,7 +61,6 @@ button {
 .menu {
     display: none;
     align-items: center;
-    justify-content: space-between;
     position: absolute;
     top: 0;
     left: 0;
@@ -89,6 +88,10 @@ button.close-menu-btn {
     margin-right: 1.5rem;
 }
 
+button.close-menu-btn img {
+    min-width: 17px;
+}
+
 .menu li {
     padding: 10px;
 }
@@ -107,12 +110,15 @@ button.menu-btn {
     height: 40px;
     border-radius: 50%;
     margin-right: 30%;
+    display: block;
 }
 
 .logo-div {
-    min-width: 60px;
+    padding-top: 3px;
 }
-
+.logo-div img{
+    width: 100%;
+}
 /* first image div*/
 .image-one-div {
     width: 100%;
@@ -181,6 +187,10 @@ a.shop-now {
     padding-top: 1rem;
 }
 
+a.shop-now:hover {
+    color: var(--DarkGray);
+}
+
 a.shop-now img {
     margin-left: 1.5rem;
 }
@@ -222,4 +232,113 @@ p.info-two {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+}
+
+@media only screen and (min-width:650px) {
+    .menu {
+        padding: 2rem 5rem;
+    }
+
+    .menu li {
+        padding: 10px 2rem;
+    }
+
+    .menu li a {
+        font-size: 18px;
+    }
+
+    button.close-menu-btn {
+        margin-right: 5rem;
+    }
+
+    .image-one-div {
+        background-image: url(./images/desktop-image-hero-1.jpg);
+        height: 530px;
+    }
+
+    .text-one-div {
+        height: 530px;
+        padding: 5rem 3rem;
+        justify-content: space-around;
+    }
+
+    h1.header-one {
+        font-size: 50px;
+    }
+
+    p.info {
+        font-size: 18px;
+    }
+
+    .text-two-div {
+        padding: 5rem 3rem;
+    }
+
+    h3.header-two {
+        letter-spacing: 10px;
+        font-size: 25px;
+    }
+
+    p.info-two {
+        font-size: 18px;
+    }
+}
+
+@media only screen and (min-width:850px) {
+    button.menu-btn{
+        display: none;
+    }
+    .nav-bar{
+        padding: 4rem;
+    }
+    button.close-menu-btn{
+        display: none;
+    }
+    .logo-div {
+        min-width: 80px;
+        margin-right: 4rem;
+    }
+    .black-screen{
+        display: none;
+    }
+    .menu{
+        display: flex;
+        position: static;
+        padding: 0;
+        background-color: transparent;
+    }
+    .menu li{
+        padding: 10px 1.5rem;
+    }
+    .menu li a{/* add hover effect(underline) using ::after*/
+        color: var(--White);
+        font-weight: 500;
+    }
+}
+@media only screen and (min-width:1020px) {
+    
+    .full,main{
+        overflow: hidden;
+    }
+    .desktop-div{
+        width: 100%;
+        height: 70%;
+        display: flex;
+    }
+    .image-one-div{
+        width: 60%;
+    }
+    .text-one-div{
+        width: 40%;
+    }
+    h1.header-one {
+        font-size: 40px;
+    }
+    .desktop-div-two{
+        display: flex;
+        justify-content: space-evenly;
+    }
+    .text-two-div{
+        padding-bottom: 0;
+    }
 }

@@ -14,6 +14,11 @@ const mobileImages = [
     "./images/mobile-image-hero-2.jpg",
     "./images/mobile-image-hero-3.jpg"
 ];
+const destopImages = [
+    "./images/desktop-image-hero-1.jpg",
+    "./images/desktop-image-hero-2.jpg",
+    "./images/desktop-image-hero-3.jpg"
+];
 const headerText = document.querySelector(".header-one");
 const paragraphText = document.querySelector(".info");
 const headers = [
@@ -34,6 +39,9 @@ const paragraphs = [
 ]
 let currentSlide = 0;
 
+/* menu links */
+const menuLinks = document.querySelectorAll(".link");
+
 /* event listners */
 menuBtn.addEventListener('click', openMenu);
 closeMenuBtn.addEventListener('click', closeMenu);
@@ -48,7 +56,7 @@ function closeMenu() {
     menu.classList.remove("on");
     menuBg.classList.remove("on");
 }
-/* change image and text*/ 
+/* change image and text*/
 function changeSlide() {
     imageDisplay.style.backgroundImage = "url('" + mobileImages[currentSlide] + "')";
     headerText.textContent = headers[currentSlide];
@@ -67,4 +75,18 @@ function previousSlide() {
         currentSlide = mobileImages.length - 1;
     }
     changeSlide();
+}
+
+menuLinks.forEach(link => {
+    link.addEventListener('click', handleLink);
+})
+function handleLink(e) {
+    e.preventDefault();
+    let target = e.target.getAttribute("href");
+    let section = document.querySelector(target);
+
+    if (section) {
+        closeMenu();
+        section.scrollIntoView({ behavior: "smooth" });
+    }
 }
