@@ -9,12 +9,14 @@ const imageDisplay = document.querySelector(".image-one-div");
 const textDisplay = document.querySelector(".text-one-div");
 const leftArrow = document.querySelector(".left");
 const rightArrow = document.querySelector(".right");
+/* images for mobile screens*/
 const mobileImages = [
     "./images/mobile-image-hero-1.jpg",
     "./images/mobile-image-hero-2.jpg",
     "./images/mobile-image-hero-3.jpg"
 ];
-const destopImages = [
+/* images for desktop stop screens*/
+const desktopImages = [
     "./images/desktop-image-hero-1.jpg",
     "./images/desktop-image-hero-2.jpg",
     "./images/desktop-image-hero-3.jpg"
@@ -47,36 +49,64 @@ menuBtn.addEventListener('click', openMenu);
 closeMenuBtn.addEventListener('click', closeMenu);
 leftArrow.addEventListener('click', previousSlide);
 rightArrow.addEventListener('click', nextSlide);
+window.addEventListener('resize', updateImage);
+updateImage();
 
 function openMenu() {
     menu.classList.add("on");
     menuBg.classList.add('on');
 }
+
 function closeMenu() {
     menu.classList.remove("on");
     menuBg.classList.remove("on");
 }
+
 /* change image and text*/
+var screenWidth = window.innerWidth;
+
+function updateImage() {
+    if (screenWidth > 850) {
+        imageDisplay.style.backgroundImage = "url('" + desktopImages[currentSlide] + "')";
+    }
+    else {
+        imageDisplay.style.backgroundImage = "url('" + mobileImages[currentSlide] + "')";
+    }
+}
+
 function changeSlide() {
-    imageDisplay.style.backgroundImage = "url('" + mobileImages[currentSlide] + "')";
+    if (screenWidth < 850) {
+        imageDisplay.style.backgroundImage = "url('" + mobileImages[currentSlide] + "')";
+    }
+    else if (screenWidth > 850) {
+        imageDisplay.style.backgroundImage = "url('" + desktopImages[currentSlide] + "')";
+    }
     headerText.textContent = headers[currentSlide];
     paragraphText.textContent = paragraphs[currentSlide];
 }
+
+
 function nextSlide() {
     currentSlide++;
     if (currentSlide >= mobileImages.length) {
         currentSlide = 0;
     }
     changeSlide();
+    updateImage()
+
 }
+
 function previousSlide() {
     currentSlide--;
     if (currentSlide < 0) {
         currentSlide = mobileImages.length - 1;
     }
     changeSlide();
+    updateImage()
 }
 
+
+/* scroll to section when menu link is clicked */
 menuLinks.forEach(link => {
     link.addEventListener('click', handleLink);
 })
@@ -90,3 +120,6 @@ function handleLink(e) {
         section.scrollIntoView({ behavior: "smooth" });
     }
 }
+/*how to switch the image slider from 
+mobile version images to desktop version images?? */
+
